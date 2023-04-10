@@ -1,0 +1,28 @@
+{
+  "env": {
+    "myDefaultIncludePath": ["${workspaceFolder}/ariac_plugins/include/**", "${workspaceFolder}/include"]
+  },
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "${myDefaultIncludePath}",
+        "/home/zeid/ariac2023_main/install/ariac_msgs/include/**",
+        "/home/zeid/ariac2023_main/install/lecture7/share/lecture7/include/lecture7/**",
+        "/home/zeid/ariac2023_main/install/competitor_interfaces/**",
+        "/opt/ros/galactic/include/**",
+        "/home/zeid/ariac2023_main/install/ariac_plugins/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,36 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/zeid/human_staging/install/ariac_human/lib/python3.8/site-packages",
+        "/home/zeid/human_staging/install/ariac_msgs/lib/python3.8/site-packages",
+        "/home/zeid/human_staging/install/ariac_gui/lib/python3.8/site-packages",
+        "/home/zeid/human_staging/install/ariac_gazebo/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_human/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_msgs/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_gui/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_gazebo/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_human/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_msgs/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_gui/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_gazebo/lib/python3.8/site-packages",
+        "/opt/ros/galactic/lib/python3.8/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/zeid/human_staging/install/ariac_human/lib/python3.8/site-packages",
+        "/home/zeid/human_staging/install/ariac_msgs/lib/python3.8/site-packages",
+        "/home/zeid/human_staging/install/ariac_gui/lib/python3.8/site-packages",
+        "/home/zeid/human_staging/install/ariac_gazebo/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_human/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_msgs/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_gui/lib/python3.8/site-packages",
+        "/home/zeid/ariac_release/install/ariac_gazebo/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_human/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_msgs/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_gui/lib/python3.8/site-packages",
+        "/home/zeid/test_human/install/ariac_gazebo/lib/python3.8/site-packages",
+        "/opt/ros/galactic/lib/python3.8/site-packages"
+    ],
+    "files.associations": {
+        "*.world": "xml",
+        "vector": "cpp"
+    }
+}

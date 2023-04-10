@@ -1,0 +1,64 @@
+# Trial Name: hpo_sample.yaml
+# ENPM663
+
+time_limit: 400 # options: -1 (no time limit) or number of seconds (max 500)
+
+kitting_trays: # Which kitting trays will be spawn
+  tray_ids: [1, 2] 
+  slots: [2, 3]
+
+# PART SETUP
+parts:
+  bins:
+    bin5:
+      - type: 'sensor'
+        color: 'purple'
+        slots: [4, 6]
+        rotation: 'pi/6'
+    bin6:
+      - type: 'pump'
+        color: 'orange'
+        slots: [4, 6]
+        rotation: 'pi/6' 
+        
+# CHALLENGE SETUP
+
+      
+
+# ORDER SETUP
+orders:
+  - id: 'MMB30H00'
+    type: 'kitting'
+    announcement:
+      time_condition: 0
+    priority: false
+    kitting_task:
+      agv_number: 2
+      tray_id: 1
+      destination: 'warehouse'
+      products:
+        - type: 'pump'
+          color: 'orange'
+          quadrant: 1
+        - type: 'pump'
+          color: 'orange'
+          quadrant: 2
+  - id: 'MMB30H60'
+    type: 'kitting'
+    announcement:
+      part_place_condition:
+        color: 'orange'
+        type: 'pump'
+        agv: 2
+    priority: true
+    kitting_task:
+      agv_number: 1
+      tray_id: 2
+      destination: 'warehouse'
+      products:
+        - type: 'pump'
+          color: 'green'
+          quadrant: 1
+        - type: 'pump'
+          color: 'green'
+          quadrant: 2

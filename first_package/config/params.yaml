@@ -1,0 +1,4 @@
+pub_sub_node:
+  ros__parameters:
+    jedi: 'Yoda'
+    timer_period: 0.5

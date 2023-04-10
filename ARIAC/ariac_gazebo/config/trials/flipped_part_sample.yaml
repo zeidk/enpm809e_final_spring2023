@@ -1,0 +1,45 @@
+# Trial Name: flipped_part_sample.yaml
+# ENPM663
+
+time_limit: 400 # options: -1 (no time limit) or number of seconds (max 500)
+
+kitting_trays: # Which kitting trays will be spawn
+  tray_ids: [1, 1] 
+  slots: [2, 3]
+
+# PART SETUP
+
+parts:
+  agvs:
+    agv1:
+      tray_id: 1
+      parts:
+        - type: 'battery'
+          color: 'green'
+          quadrant: 1
+          rotation: 0
+          flipped: true
+        - type: 'battery'
+          color: 'green'
+          quadrant: 2
+          rotation: 'pi'
+  
+
+# ORDER SETUP
+orders:
+  - id: 'MMB30H00'
+    type: 'kitting'
+    announcement:
+      time_condition: 0
+    priority: false
+    kitting_task:
+      agv_number: 1
+      tray_id: 1
+      destination: 'warehouse'
+      products:
+        - type: 'battery'
+          color: 'green'
+          quadrant: 1
+        - type: 'battery'
+          color: 'green'
+          quadrant: 2
