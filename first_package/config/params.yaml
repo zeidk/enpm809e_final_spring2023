@@ -1,4 +1,4 @@
-pub_sub_node:
+publisher_node:
   ros__parameters:
-    jedi: 'Yoda'
-    timer_period: 0.5
+    jedi: 'Luke Skywalker'
+    timer_period: 1.0

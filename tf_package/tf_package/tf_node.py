@@ -28,18 +28,20 @@ class TfListener(Node):
         self._tf_buffer = Buffer()
         self._tf_listener = TransformListener(self._tf_buffer, self)
         self._transform_broadcaster = TransformBroadcaster(self)
-        # self._listener_timer = self.create_timer(0.33, self._listener_callback)  # 30 Hz = 0.333s
-        # self._broadcaster_timer = self.create_timer(0.33, self._broadcaster_callback)  # 30 Hz = 0.333s
-        # self._kdl_timer = self.create_timer(0.33, self._kdl_callback)  # 30 Hz = 0.333s
+        self._listener_timer = self.create_timer(0.33, self._listener_callback)  # 30 Hz = 0.333s
+        self._broadcaster_timer = self.create_timer(0.33, self._broadcaster_callback)  # 30 Hz = 0.333s
+        self._kdl_timer = self.create_timer(0.33, self._kdl_callback)  # 30 Hz = 0.333s
 
     def _listener_callback(self):
         '''
         Callback function for the timer listener
         '''
         try:
-            transform = self._tf_buffer.lookup_transform(self._reference_frame,
-                                                         self._target_frame,
+            transform = self._tf_buffer.lookup_transform(self._target_frame,
+                                                         self._reference_frame,
                                                          rclpy.time.Time())
+            
+            self.get_logger().info("--LISTENER--")
             self.get_logger().info(
                 f"position: {transform.transform.translation.x}, {transform.transform.translation.y}, {transform.transform.translation.z}")
 
@@ -92,13 +94,13 @@ class TfListener(Node):
         block_pose.orientation.z = 0.0
         block_pose.orientation.w = 0.7071
 
+        self.get_logger().info("--KDL--")
         block_world = self._multiply_pose(camera_pose, block_pose)
         self.get_logger().info(
             f"position: {block_world.position.x}, {block_world.position.y}, {block_world.position.z}")
 
         self.get_logger().info(
             f"orientation: {block_world.orientation.x}, {block_world.orientation.y}, {block_world.orientation.z}, {block_world.orientation.w}")
-
 
     def _multiply_pose(self, pose1: Pose, pose2: Pose) -> Pose:
         '''
@@ -144,7 +146,7 @@ def main(args=None):
 
     rclpy.init(args=args)
 
-    node = TfListener("bin1_frame", "world")
+    node = TfListener("block", "world")
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:

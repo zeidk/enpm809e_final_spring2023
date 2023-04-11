@@ -26,16 +26,16 @@ parts:
 
         
 # GLOBAL CHALLENGES
-challenges:
-  # - human:
-  #     behavior: 'helpful'
-  #     time_condition: 5.0
-  - human:
-      behavior: 'antagonistic'
-      part_place_condition:
-        color: 'blue'
-        type: 'battery'
-        agv: 4
+# challenges:
+#   # - human:
+#   #     behavior: 'helpful'
+#   #     time_condition: 5.0
+#   - human:
+#       behavior: 'antagonistic'
+#       part_place_condition:
+#         color: 'blue'
+#         type: 'battery'
+#         agv: 4
 
 # ORDERS
 orders:
