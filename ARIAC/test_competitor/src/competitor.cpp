@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   std::thread([&executor]() { executor.spin(); }).detach();
 
   // Start Competition
-  test_competitor->StartCompetition();
+  // test_competitor->StartCompetition();
 
   // Move Robots to Home Poses
   test_competitor->FloorRobotSendHome();
