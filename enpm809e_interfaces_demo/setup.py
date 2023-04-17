@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'tf_package'
+package_name = 'enpm809e_interfaces_demo'
 
 setup(
     name=package_name,
@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'tf_node = tf_package.rwa4_node:main',
+            'demo = enpm809e_interfaces_demo.demo:main',
+            'server = enpm809e_interfaces_demo.server:main'
         ],
     },
 )
