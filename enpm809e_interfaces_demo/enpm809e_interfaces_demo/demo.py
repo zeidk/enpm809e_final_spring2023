@@ -7,7 +7,6 @@ from enpm809e_interfaces.msg import WeatherStation
 from enpm809e_interfaces.srv import AddTwoInts
 
 
-
 class DemoInterface(Node):
     '''
     Class showing how to use ROS2 interfaces.
@@ -22,12 +21,11 @@ class DemoInterface(Node):
     def __init__(self, node_name):
         super().__init__(node_name)
 
-        
         service_group = MutuallyExclusiveCallbackGroup()
         timer_group = MutuallyExclusiveCallbackGroup()
 
         # Service client
-        self._client = self.create_client(AddTwoInts, 'enpm809e_add_two_ints', callback_group=service_group)
+        self._client = self.create_client(AddTwoInts, 'enpm809e_add_two_ints')
         while not self._client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self._request = AddTwoInts.Request()
@@ -37,10 +35,16 @@ class DemoInterface(Node):
 
         # Publisher
         self._publisher = self.create_publisher(WeatherStation, 'weather_forecast', 10)
-        self._publisher_timer = self.create_timer(1.0, self._publisher_callback, callback_group=timer_group)
+        self._publisher_timer = self.create_timer(1.0, self._publisher_callback)
         self.get_logger().info(f'{node_name} node running')
         self._msg = WeatherStation()
 
+        self._sub = self.create_subscription(WeatherStation, 'weather_forecast', self._sub_callback, 10)
+
+    def _sub_callback(self, msg):
+        if msg.weather == WeatherStation.SUNNY:
+            self.get_logger().info('Sunny')
+            
     def _client_callback(self):
         '''
         Timer callback function to call a service

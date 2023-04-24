@@ -1,0 +1,45 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/zeid/final_809e_ws/install/test_competitor/include/**",
+        "/home/zeid/final_809e_ws/install/enpm809e_interfaces/include/**",
+        "/home/zeid/final_809e_ws/install/ariac_sensors/include/**",
+        "/home/zeid/final_809e_ws/install/ariac_plugins/include/**",
+        "/home/zeid/final_809e_ws/install/ariac_msgs/include/**",
+        "/home/zeid/dev/ariac/ariac2023_main/install/test_competitor/include/**",
+        "/home/zeid/dev/ariac/ariac2023_main/install/group1_interfaces/include/**",
+        "/home/zeid/dev/ariac/ariac2023_main/install/group1/include/**",
+        "/home/zeid/dev/ariac/ariac2023_main/install/ariac_sensors/include/**",
+        "/home/zeid/dev/ariac/ariac2023_main/install/ariac_plugins/include/**",
+        "/home/zeid/dev/ariac/ariac2023_main/install/ariac_msgs/include/**",
+        "/home/zeid/dev/enpm663/install/test_competitor/include/**",
+        "/home/zeid/dev/enpm663/install/competitor_interfaces/include/**",
+        "/home/zeid/dev/enpm663/install/ariac_sensors/include/**",
+        "/home/zeid/dev/enpm663/install/ariac_plugins/include/**",
+        "/home/zeid/dev/enpm663/install/ariac_msgs/include/**",
+        "/home/zeid/dev/ariac/ariac2023/install/test_competitor/include/**",
+        "/home/zeid/dev/ariac/ariac2023/install/group3/include/**",
+        "/home/zeid/dev/ariac/ariac2023/install/ariac_sensors/include/**",
+        "/home/zeid/dev/ariac/ariac2023/install/ariac_plugins/include/**",
+        "/home/zeid/dev/ariac/ariac2023/install/ariac_msgs/include/**",
+        "/opt/ros/galactic/include/**",
+        "/home/zeid/final_809e_ws/src/enpm809e_final_spring2023/ARIAC/ariac_plugins/include/**",
+        "/home/zeid/final_809e_ws/src/enpm809e_final_spring2023/ARIAC/ariac_sensors/include/**",
+        "/home/zeid/final_809e_ws/src/enpm809e_final_spring2023/ARIAC/test_competitor/include/**",
+        "/home/zeid/final_809e_ws/src/enpm809e_final_spring2023/dumb/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
