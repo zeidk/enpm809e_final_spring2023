@@ -1,0 +1,3 @@
+ros2 launch ariac_gazebo ariac.launch.py trial_name:=kitting
+ros2 launch robot_commander robot_commander.launch.py
+ros2 run robot_commander floor_robot_main.py

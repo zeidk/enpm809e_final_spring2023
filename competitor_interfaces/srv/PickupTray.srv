@@ -1,0 +1,10 @@
+uint8 FLOOR_ROBOT=0
+uint8 CEILING_ROBOT=1
+
+
+uint8 robot # FLOOR_ROBOT or CEILING_ROBOT
+uint8 tray_id # tray number
+geometry_msgs/Pose tray_pose # pose of the tray in the world frame
+string tray_station # kts1 or kts2
+---
+bool success
