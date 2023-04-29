@@ -1,0 +1,12 @@
+uint8 FLOOR_ROBOT=0
+uint8 CEILING_ROBOT=1
+
+# FLOOR_ROBOT or CEILING_ROBOT
+uint8 robot 
+# 
+uint8 part_type
+uint8 part_color
+geometry_msgs/Pose part_pose # pose of the part in the world frame
+string bin_side # left_bins or right_bins
+---
+bool success
