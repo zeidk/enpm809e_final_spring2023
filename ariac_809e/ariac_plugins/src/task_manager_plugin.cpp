@@ -1003,7 +1003,7 @@ namespace ariac_plugins
             // Create the start competition service
             // Now competitors can call this service to start the competition
             impl_->start_competition_service_ = impl_->ros_node_->create_service<std_srvs::srv::Trigger>("/ariac/start_competition", std::bind(&TaskManagerPlugin::StartCompetitionServiceCallback, this, std::placeholders::_1, std::placeholders::_2));
-            
+
             RCLCPP_INFO_STREAM(impl_->ros_node_->get_logger(), "You can now start the competition!");
             impl_->current_state_ = ariac_msgs::msg::CompetitionState::READY;
 
@@ -1014,9 +1014,10 @@ namespace ariac_plugins
                 std::bind(&TaskManagerPlugin::EndCompetitionServiceCallback,
                           this, std::placeholders::_1, std::placeholders::_2));
 
-            
-                          
-            impl_->current_state_ = ariac_msgs::msg::CompetitionState::STARTED;
+            // impl_->human_safe_zone_penalty_service_ = impl_->ros_node_->create_service<std_srvs::srv::Trigger>(
+            //     "/ariac/set_human_safe_zone_penalty",
+            //     std::bind(&TaskManagerPlugin::SafeZonePenaltyServiceCallback,
+            //               this, std::placeholders::_1, std::placeholders::_2));
         }
 
         if ((current_sim_time - impl_->last_sim_time_).Double() >= 1.0)
@@ -1082,11 +1083,11 @@ namespace ariac_plugins
             impl_->StoreStationParts(3, impl_->assembly_station_images_[3]);
             impl_->StoreStationParts(4, impl_->assembly_station_images_[4]);
 
-            ProcessEndSafeZonePenalty();
+            // ProcessEndSafeZonePenalty();
             ProcessOrdersToAnnounce();
-            ProcessChallengesToAnnounce();
-            ProcessInProgressSensorBlackouts();
-            ProcessInProgressRobotMalfunctions();
+            // ProcessChallengesToAnnounce();
+            // ProcessInProgressSensorBlackouts();
+            // ProcessInProgressRobotMalfunctions();
             UpdateSensorsHealth();
             UpdateRobotsHealth();
         }
@@ -2389,10 +2390,6 @@ namespace ariac_plugins
         std::shared_ptr<std_srvs::srv::Trigger::Response> response)
     {
         std::lock_guard<std::mutex> lock(impl_->lock_);
-
-        // gzdbg << "\n";
-        // gzdbg << "StartCompetitionServiceCallback\n";
-
         (void)request;
 
         if (impl_->current_state_ == ariac_msgs::msg::CompetitionState::READY)

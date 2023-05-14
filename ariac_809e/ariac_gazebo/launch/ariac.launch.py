@@ -1,4 +1,5 @@
 import os
+import sys
 import yaml
 import rclpy.logging
 from launch import LaunchDescription
@@ -34,18 +35,19 @@ def launch_setup(context, *args, **kwargs):
     )
 
     trial_name = LaunchConfiguration("trial_name").perform(context)
+    start_rviz = LaunchConfiguration("start_rviz", default=False)
     trial_config_path = os.path.join(pkg_share, 'config', 'trials', trial_name + ".yaml")
 
     if not os.path.exists(trial_config_path):
         rclpy.logging.get_logger('Launch File').fatal(
             f"Trial configuration '{trial_name}' not found in {pkg_share}/config/trials/")
-        exit()
+        sys.exit()
 
     try:
         competitor_pkg_share = get_package_share_directory(LaunchConfiguration("competitor_pkg").perform(context))
     except PackageNotFoundError:
         rclpy.logging.get_logger('Launch File').fatal("Competitor package not found")
-        exit()
+        sys.exit()
 
     sensor_config = LaunchConfiguration("sensor_config").perform(context)
     user_config_path = os.path.join(competitor_pkg_share, 'config', sensor_config + ".yaml")
@@ -53,7 +55,7 @@ def launch_setup(context, *args, **kwargs):
     if not os.path.exists(user_config_path):
         rclpy.logging.get_logger('Launch File').fatal(
             f"Sensor configuration '{sensor_config}.yaml' not found in {competitor_pkg_share}/config/")
-        exit()
+        sys.exit()
 
     # Gazebo node
     gazebo = IncludeLaunchDescription(
@@ -188,7 +190,7 @@ def launch_setup(context, *args, **kwargs):
         }.items(),
         condition=IfCondition(trial_has_human_challenge)
     )
-    
+
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare("ariac_human"), "rviz", "navigation.rviz"]
     )
@@ -199,8 +201,9 @@ def launch_setup(context, *args, **kwargs):
         name="rviz2_human",
         output="log",
         arguments=["-d", rviz_config_file],
+        condition=IfCondition(start_rviz)
     )
-    
+
     nodes_to_start = [
         gazebo,
         sensor_tf_broadcaster,
@@ -211,14 +214,21 @@ def launch_setup(context, *args, **kwargs):
         *controller_spawner_nodes,
         human,
         rviz_node,
-        aruco_node,
+        # aruco_node,
     ]
 
     return nodes_to_start
 
 
 def generate_launch_description():
+    '''
+    Returns a LaunchDescription object
+    '''    
     declared_arguments = []
+
+    # declared_arguments.append(
+    #     DeclareLaunchArgument("start_rviz", default_value=False, description="whether or not to start rviz")
+    # )
 
     declared_arguments.append(
         DeclareLaunchArgument("trial_name", default_value="kitting", description="name of trial")

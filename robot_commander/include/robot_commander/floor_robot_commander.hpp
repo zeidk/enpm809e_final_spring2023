@@ -69,7 +69,6 @@ public:
     void FloorRobotSendHome();
     bool FloorRobotSetGripperState(bool enable);
     bool FloorRobotEnterToolChanger(std::string station, std::string gripper_type);
-    bool FloorRobotPlacePartOnKitTray(int agv_num, int quadrant);
     bool FloorRobotExitToolChanger(std::string station, std::string gripper_type);
     bool FloorRobotRetractFromAGV(std::string agv);
     bool FloorRobotPlacePartInTray(std::string agv_, int quadrant_);
@@ -80,6 +79,9 @@ public:
     bool FloorRobotPlaceTrayOnAGV(std::string agv, int tray_id);
 
 private:
+
+    // Object which is picked and placed by the robot
+    std::string handled_object_;
     // Testing
     rclcpp::Node::SharedPtr node_;
     rclcpp::Executor::SharedPtr executor_;
@@ -93,7 +95,7 @@ private:
     // Robot Move Functions
     bool FloorRobotMovetoTarget();
     bool FloorRobotMoveCartesian(std::vector<geometry_msgs::msg::Pose> waypoints, double vsf, double asf);
-    void FloorRobotWaitForAttach(double timeout);
+    bool FloorRobotWaitForAttach(double timeout);
 
     geometry_msgs::msg::Quaternion SetRobotOrientation(double rotation);
 
@@ -159,10 +161,7 @@ private:
     bool right_bins_camera_received_data = false;
     bool floor_robot_task_received_data_ = false;
 
-    void kts1_camera_cb(const ariac_msgs::msg::AdvancedLogicalCameraImage::ConstSharedPtr msg);
-    void kts2_camera_cb(const ariac_msgs::msg::AdvancedLogicalCameraImage::ConstSharedPtr msg);
-    void left_bins_camera_cb(const ariac_msgs::msg::AdvancedLogicalCameraImage::ConstSharedPtr msg);
-    void right_bins_camera_cb(const ariac_msgs::msg::AdvancedLogicalCameraImage::ConstSharedPtr msg);
+   
     // Competition state callback
     void competition_state_cb(const ariac_msgs::msg::CompetitionState::ConstSharedPtr msg);
     // Gripper State Callback

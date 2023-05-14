@@ -4,27 +4,29 @@ To test this script, run the following commands in separate terminals:
 
 - ros2 launch robot_commander robot_commander.launch.py
 - ros2 run robot_commander floor_robot_main.py
-- ros2 launch ariac_gazebo ariac.launch.py trial_name:=kitting
+- ros2 launch ariac_gazebo ariac.launch.py trial_name:=final
 '''
 
 import rclpy
-from robot_commander.competition_interface import CompetitionInterface
 from rclpy.executors import MultiThreadedExecutor
+from robot_commander.robot_commander_interface import RobotCommanderInterface
 
 
 def main(args=None):
+    '''
+    Main function for the floor robot.
+    '''
     rclpy.init(args=args)
-    interface = CompetitionInterface()
-    interface.start_competition()
+    node = RobotCommanderInterface()
 
     executor = MultiThreadedExecutor()
-    executor.add_node(interface)
+    executor.add_node(node)
     try:
         executor.spin()
     except rclpy.executors.ExternalShutdownException:
         pass
 
-    interface.destroy_node()
+    node.destroy_node()
     rclpy.shutdown()
 
 

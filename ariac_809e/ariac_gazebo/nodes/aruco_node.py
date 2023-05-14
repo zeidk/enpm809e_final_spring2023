@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 This node locates Aruco AR markers in images and publishes their ids and poses.
 
@@ -35,19 +34,15 @@ from rclpy.qos import qos_profile_sensor_data
 from cv_bridge import CvBridge
 import numpy as np
 import cv2
-
+from ariac_gazebo import transformations
 
 from sensor_msgs.msg import CameraInfo
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseArray, Pose
 from aruco_809e_interfaces.msg import ArucoMarkers
-from ariac_gazebo import transformations
 
 
 class ArucoNode(rclpy.node.Node):
-    '''
-    This node locates Aruco AR markers in images and publishes their ids and poses.
-    '''
 
     def __init__(self):
         super().__init__('aruco_node')
@@ -58,7 +53,7 @@ class ArucoNode(rclpy.node.Node):
         self.declare_parameter("image_topic", "/camera/image_raw")
         self.declare_parameter("camera_info_topic",
                                "/camera/camera_info")
-        self.declare_parameter("camera_frame", "/camera_rgb_optical_frame")
+        self.declare_parameter("camera_frame", "/camera_rgb_frame")
 
         self.marker_size = self.get_parameter("marker_size").get_parameter_value().double_value
         dictionary_id_name = self.get_parameter(
@@ -73,9 +68,9 @@ class ArucoNode(rclpy.node.Node):
             if type(dictionary_id) != type(cv2.aruco.DICT_5X5_100):
                 raise AttributeError
         except AttributeError:
-            self.get_logger().error(f"bad aruco_dictionary_id: {dictionary_id_name}")
+            self.get_logger().error("bad aruco_dictionary_id: {}".format(dictionary_id_name))
             options = "\n".join([s for s in dir(cv2.aruco) if s.startswith("DICT")])
-            self.get_logger().error(f"valid options: {options}")
+            self.get_logger().error("valid options: {}".format(options))
 
         # Set up subscriptions
         self.info_sub = self.create_subscription(CameraInfo,
@@ -95,7 +90,6 @@ class ArucoNode(rclpy.node.Node):
         self.intrinsic_mat = None
         self.distortion = None
 
-        
         self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
         self.aruco_parameters = cv2.aruco.DetectorParameters_create()
         self.bridge = CvBridge()
@@ -164,9 +158,6 @@ class ArucoNode(rclpy.node.Node):
 
 
 def main():
-    '''
-    Main function to set up the node.
-    '''
     rclpy.init()
     node = ArucoNode()
     rclpy.spin(node)

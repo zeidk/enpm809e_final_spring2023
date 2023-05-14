@@ -3,13 +3,9 @@ import yaml
 
 from launch import LaunchDescription
 from launch.actions import (
-    DeclareLaunchArgument,
-    IncludeLaunchDescription,
-    OpaqueFunction,
+    OpaqueFunction
 )
-from launch.conditions import IfCondition
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import Command, FindExecutable, PathJoinSubstitution, LaunchConfiguration
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
@@ -121,7 +117,7 @@ def launch_setup(context, *args, **kwargs):
     
     nodes_to_start = [
         move_group_node,
-        # rviz_node    
+        rviz_node    
     ]
 
     return nodes_to_start

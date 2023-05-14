@@ -37,7 +37,7 @@ class NavigationDemo(Node):
         '''
         Set the initial pose of the robot
         '''
-        initial_pose = self.create_pose_stamped(-14.999840, -10.000000, 0.0)
+        initial_pose = self.create_pose_stamped(-15, -10.000000, 0.0)
         self._basic_navigator.setInitialPose(initial_pose)
 
     def create_pose_stamped(self, position_x, position_y, yaw_angle):
