@@ -1,0 +1,9 @@
+uint8 FLOOR_ROBOT=0
+uint8 CEILING_ROBOT=1
+
+uint8 robot # FLOOR_ROBOT or CEILING_ROBOT
+geometry_msgs/Pose part_pose # pose of the part in the world frame
+string agv
+uint8 quadrant
+---
+bool success

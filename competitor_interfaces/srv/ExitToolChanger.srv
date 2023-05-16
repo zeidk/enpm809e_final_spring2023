@@ -1,0 +1,13 @@
+# Move the end effector out of the tool changer at the specified station.
+
+uint8 FLOOR_ROBOT=0
+uint8 CEILING_ROBOT=1
+
+# FLOOR_ROBOT or CEILING_ROBOT
+uint8 robot 
+# kts1 or kts2
+string station 
+# parts or trays
+string gripper_type 
+---
+bool success

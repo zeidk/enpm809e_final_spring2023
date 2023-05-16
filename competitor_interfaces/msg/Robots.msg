@@ -1,0 +1,2 @@
+uint8 FLOOR_ROBOT=0
+uint8 CEILING_ROBOT=1

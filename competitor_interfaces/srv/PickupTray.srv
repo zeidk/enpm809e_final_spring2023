@@ -1,0 +1,15 @@
+# Pick up a tray from a kitting station
+
+uint8 FLOOR_ROBOT=0
+uint8 CEILING_ROBOT=1
+
+# FLOOR_ROBOT or CEILING_ROBOT
+uint8 robot 
+# tray id
+uint8 tray_id
+# pose of the tray in the world frame
+geometry_msgs/Pose tray_pose 
+# kts1 or kts2
+string tray_station 
+---
+bool success
