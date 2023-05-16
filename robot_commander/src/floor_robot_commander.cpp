@@ -117,7 +117,7 @@ FloorRobotCommander::FloorRobotCommander() : Node("floor_robot_commander"),
 
     object_pose.position.x = -0.870000;
     object_pose.position.y = -5.840000;
-    object_pose.position.z = 0.734;
+    object_pose.position.z = 0.733;
     object_pose.orientation.x = object_quat.x();
     object_pose.orientation.y = object_quat.y();
     object_pose.orientation.z = object_quat.z();
@@ -130,7 +130,7 @@ FloorRobotCommander::FloorRobotCommander() : Node("floor_robot_commander"),
 
     object_pose.position.x = -1.730000;
     object_pose.position.y = 5.840000;
-    object_pose.position.z = 0.734;
+    object_pose.position.z = 0.733;
     object_pose.orientation.x = object_quat.x();
     object_pose.orientation.y = object_quat.y();
     object_pose.orientation.z = object_quat.z();
@@ -437,7 +437,7 @@ void FloorRobotCommander::floor_gripper_state_cb(
     const ariac_msgs::msg::VacuumGripperState::ConstSharedPtr msg)
 {
     floor_gripper_state_ = *msg;
-    RCLCPP_INFO(get_logger(), "======== Floor gripper state: %s", msg->attached ? "attached" : "detached");
+    // RCLCPP_INFO(get_logger(), "======== Floor gripper state: %s", msg->attached ? "attached" : "detached");
     // RCLCPP_INFO(get_logger(), "======== Floor gripper state: %s", msg->enabled ? "enabled" : "disabled");
 }
 
@@ -898,7 +898,7 @@ bool FloorRobotCommander::FloorRobotPickupTray(int tray_id_, geometry_msgs::msg:
     waypoints.push_back(BuildPose(tray_pose_.position.x, tray_pose_.position.y,
                                   tray_pose_.position.z + pick_offset_, SetRobotOrientation(tray_rotation)));
     FloorRobotMoveCartesian(waypoints, 0.3, 0.3);
-    FloorRobotWaitForAttach(5.0);
+    FloorRobotWaitForAttach(3.0);
 
     // Add kit tray to planning scene
     std::string tray_name = "kit_tray_" + std::to_string(tray_id_);

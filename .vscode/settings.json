@@ -1,0 +1,31 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/zeid/dev/enpm809e_spring2023_ws/install/enpm809e_interfaces_demo/lib/python3.8/site-packages",
+        "/home/zeid/dev/enpm809e_spring2023_ws/install/enpm809e_interfaces/lib/python3.8/site-packages",
+        "/home/zeid/dev/enpm809e_spring2023_ws/install/ariac_human/lib/python3.8/site-packages",
+        "/home/zeid/dev/enpm809e_spring2023_ws/install/ariac_msgs/lib/python3.8/site-packages",
+        "/home/zeid/dev/enpm809e_spring2023_ws/install/ariac_moveit_config/lib/python3.8/site-packages",
+        "/home/zeid/dev/enpm809e_spring2023_ws/install/ariac_gazebo/lib/python3.8/site-packages",
+        "/home/zeid/dev/enpm809e_spring2023_ws/install/aruco_809e_interfaces/lib/python3.8/site-packages",
+        "/opt/ros/galactic/lib/python3.8/site-packages",
+        "/opt/carla-simulator/PythonAPI/carla/dist/carla-0.9.13-py3.7-linux-x86_64.egg",
+        "/opt/carla-simulator/PythonAPI/carla"
+    ],
+    "python.analysis.extraPaths": [
+      "/home/zeid/dev/enpm809e_spring2023_ws/install/aruco_809e_interfaces/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/tf_package/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/first_package/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/enpm809e_interfaces_demo/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/enpm809e_interfaces/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/bot_nav2_demo/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/ariac_human/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/ariac_msgs/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/ariac_moveit_config/lib/python3.8/site-packages",
+      "/home/zeid/final_809e_ws/install/ariac_gazebo/lib/python3.8/site-packages",
+      "/home/zeid/dev/navigation/install/nav2_project/lib/python3.8/site-packages",
+      "/opt/ros/galactic/lib/python3.8/site-packages",
+      "",
+      "/opt/carla-simulator/PythonAPI/carla/dist/carla-0.9.13-py3.7-linux-x86_64.egg",
+      "/opt/carla-simulator/PythonAPI/carla"
+    ]
+}

@@ -46,3 +46,60 @@ orders:
         - type: 'sensor'
           color: 'red'
           quadrant: 3
+  - id: '2'
+    type: 'kitting'
+    announcement:
+      time_condition: 0
+    priority: false
+    kitting_task:
+      agv_number: 2
+      tray_id: 3
+      destination: 'warehouse'
+      products:
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 1
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 2
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 3
+  - id: '3'
+    type: 'kitting'
+    announcement:
+      time_condition: 0
+    priority: false
+    kitting_task:
+      agv_number: 2
+      tray_id: 3
+      destination: 'warehouse'
+      products:
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 1
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 2
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 3
+  - id: '4'
+    type: 'kitting'
+    announcement:
+      time_condition: 0
+    priority: false
+    kitting_task:
+      agv_number: 2
+      tray_id: 3
+      destination: 'warehouse'
+      products:
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 1
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 2
+        - type: 'sensor'
+          color: 'red'
+          quadrant: 3
