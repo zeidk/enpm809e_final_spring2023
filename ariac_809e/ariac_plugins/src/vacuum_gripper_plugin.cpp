@@ -407,6 +407,8 @@ namespace ariac_plugins
       ariac_msgs::srv::VacuumGripperControl::Request::SharedPtr req,
       ariac_msgs::srv::VacuumGripperControl::Response::SharedPtr res)
   {
+    
+
     res->success = false;
     if (req->enable)
     {
@@ -414,6 +416,8 @@ namespace ariac_plugins
       {
         enabled_ = true;
         res->success = true;
+        std::string output = "\n\n====== EnableGripper ======";
+        RCLCPP_WARN_STREAM(ros_node_->get_logger(), output);
       }
       else
       {
@@ -426,6 +430,8 @@ namespace ariac_plugins
       {
         enabled_ = false;
         res->success = true;
+        std::string output = "\n\n====== DisableGripper ======";
+        RCLCPP_WARN_STREAM(ros_node_->get_logger(), output);
       }
       else
       {
@@ -438,6 +444,8 @@ namespace ariac_plugins
       ariac_msgs::srv::ChangeGripper::Request::SharedPtr req,
       ariac_msgs::srv::ChangeGripper::Response::SharedPtr res)
   {
+    std::string output = "\n\n====== ChangeGripper ======";
+    RCLCPP_WARN_STREAM(ros_node_->get_logger(), output);
     if (current_gripper_type_ == req->gripper_type)
     {
       res->success = false;
